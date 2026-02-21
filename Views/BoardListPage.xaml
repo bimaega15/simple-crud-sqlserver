@@ -1,0 +1,438 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MiniTrello.Views.BoardListPage"
+             x:Name="BoardListPageRoot"
+             Title="{Binding Title}"
+             BackgroundColor="#0F0F1A"
+             Shell.BackgroundColor="#0F0F1A"
+             Shell.TitleColor="White"
+             Shell.NavBarIsVisible="False">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing" Command="{Binding InitPageCommand}" />
+    </ContentPage.Behaviors>
+
+    <Grid RowDefinitions="Auto,*" Padding="0">
+        <!-- Modern Dark Header -->
+        <Grid Grid.Row="0" Padding="20,16,20,14" ColumnDefinitions="*,Auto"
+              BackgroundColor="#0F0F1A">
+            <VerticalStackLayout VerticalOptions="Center" Spacing="2">
+                <Label Text="MiniTrello" FontSize="28" FontAttributes="Bold" TextColor="White"/>
+                <Label Text="Organize your workflow" FontSize="12" TextColor="#6B7280"/>
+            </VerticalStackLayout>
+            <Button Grid.Column="1" Text="+ New"
+                    BackgroundColor="#6C5CE7" TextColor="White" CornerRadius="14"
+                    FontAttributes="Bold" Padding="18,0" HeightRequest="40"
+                    FontSize="13"
+                    Command="{Binding AddBoardCommand}"/>
+        </Grid>
+
+        <!-- Kanban Grid 2x2 -->
+        <Grid Grid.Row="1" ColumnDefinitions="*,*" RowDefinitions="*,*"
+              ColumnSpacing="8" RowSpacing="8" Padding="10,6,10,10">
+
+            <!-- Backlog Column -->
+            <Frame Grid.Row="0" Grid.Column="0"
+                   BackgroundColor="{Binding BacklogDropColor}" CornerRadius="16" Padding="0"
+                   HasShadow="False" BorderColor="#2A2A3E">
+                <Frame.GestureRecognizers>
+                    <DropGestureRecognizer AllowDrop="True"
+                        DragOverCommand="{Binding DragOverCommand}"
+                        DragOverCommandParameter="0"
+                        DragLeaveCommand="{Binding DragLeaveCommand}"
+                        DragLeaveCommandParameter="0"
+                        DropCommand="{Binding DropCommand}"
+                        DropCommandParameter="0" />
+                </Frame.GestureRecognizers>
+                <Grid RowDefinitions="Auto,*" RowSpacing="0">
+                    <Grid Grid.Row="0" Padding="12,10" BackgroundColor="#1A1A2E">
+                        <HorizontalStackLayout Spacing="8">
+                            <BoxView WidthRequest="4" HeightRequest="18" CornerRadius="2"
+                                     Color="#A0AEC0" VerticalOptions="Center"/>
+                            <Label Text="Backlog" FontSize="13" FontAttributes="Bold"
+                                   TextColor="#A0AEC0" VerticalOptions="Center"/>
+                            <Frame BackgroundColor="#2A2A3E" CornerRadius="8" Padding="7,2"
+                                   HasShadow="False" BorderColor="Transparent">
+                                <Label Text="{Binding BacklogBoards.Count}" FontSize="10"
+                                       TextColor="#A0AEC0" FontAttributes="Bold"
+                                       HorizontalOptions="Center"/>
+                            </Frame>
+                        </HorizontalStackLayout>
+                    </Grid>
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding BacklogBoards}"
+                                    SelectionMode="None" Margin="6,0,6,6">
+                        <CollectionView.EmptyView>
+                            <StackLayout Padding="8,24" HorizontalOptions="Center">
+                                <Label Text="Empty" FontSize="11" TextColor="#4A5568"
+                                       HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems Mode="Reveal">
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.OpenBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#6C5CE7"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x2139;" FontSize="18"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.EditBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#F59E0B"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x270E;" FontSize="18"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.DeleteBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#EF4444"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x1F5D1;" FontSize="16"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Frame BackgroundColor="#2D2D44" CornerRadius="12"
+                                           Margin="2,3" Padding="12,10" HasShadow="False"
+                                           BorderColor="Transparent">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding BindingContext.OpenBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}"/>
+                                            <DragGestureRecognizer CanDrag="True"
+                                                DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference BoardListPageRoot}}"
+                                                DragStartingCommandParameter="{Binding}" />
+                                        </Frame.GestureRecognizers>
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="{Binding Name}" FontSize="13" FontAttributes="Bold"
+                                                   TextColor="White" LineBreakMode="TailTruncation" MaxLines="1"/>
+                                            <Label Text="{Binding Description}" FontSize="10" TextColor="#FFFFFFBB"
+                                                   MaxLines="2" LineBreakMode="TailTruncation"/>
+                                            <Label Text="{Binding CreatedDate, StringFormat='{0:dd MMM yyyy, HH:mm}'}"
+                                                   FontSize="9" TextColor="#FFFFFF80" Margin="0,2,0,0"/>
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame>
+
+            <!-- In Progress Column -->
+            <Frame Grid.Row="0" Grid.Column="1"
+                   BackgroundColor="{Binding InProgressDropColor}" CornerRadius="16" Padding="0"
+                   HasShadow="False" BorderColor="#2A2A3E">
+                <Frame.GestureRecognizers>
+                    <DropGestureRecognizer AllowDrop="True"
+                        DragOverCommand="{Binding DragOverCommand}"
+                        DragOverCommandParameter="1"
+                        DragLeaveCommand="{Binding DragLeaveCommand}"
+                        DragLeaveCommandParameter="1"
+                        DropCommand="{Binding DropCommand}"
+                        DropCommandParameter="1" />
+                </Frame.GestureRecognizers>
+                <Grid RowDefinitions="Auto,*" RowSpacing="0">
+                    <Grid Grid.Row="0" Padding="12,10" BackgroundColor="#1A1A2E">
+                        <HorizontalStackLayout Spacing="8">
+                            <BoxView WidthRequest="4" HeightRequest="18" CornerRadius="2"
+                                     Color="#63B3ED" VerticalOptions="Center"/>
+                            <Label Text="In Progress" FontSize="13" FontAttributes="Bold"
+                                   TextColor="#63B3ED" VerticalOptions="Center"/>
+                            <Frame BackgroundColor="#2A2A3E" CornerRadius="8" Padding="7,2"
+                                   HasShadow="False" BorderColor="Transparent">
+                                <Label Text="{Binding InProgressBoards.Count}" FontSize="10"
+                                       TextColor="#63B3ED" FontAttributes="Bold"
+                                       HorizontalOptions="Center"/>
+                            </Frame>
+                        </HorizontalStackLayout>
+                    </Grid>
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding InProgressBoards}"
+                                    SelectionMode="None" Margin="6,0,6,6">
+                        <CollectionView.EmptyView>
+                            <StackLayout Padding="8,24" HorizontalOptions="Center">
+                                <Label Text="Empty" FontSize="11" TextColor="#4A5568"
+                                       HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems Mode="Reveal">
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.OpenBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#6C5CE7"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x2139;" FontSize="18"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.EditBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#F59E0B"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x270E;" FontSize="18"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.DeleteBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#EF4444"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x1F5D1;" FontSize="16"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Frame BackgroundColor="#2D2D44" CornerRadius="12"
+                                           Margin="2,3" Padding="12,10" HasShadow="False"
+                                           BorderColor="Transparent">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding BindingContext.OpenBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}"/>
+                                            <DragGestureRecognizer CanDrag="True"
+                                                DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference BoardListPageRoot}}"
+                                                DragStartingCommandParameter="{Binding}" />
+                                        </Frame.GestureRecognizers>
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="{Binding Name}" FontSize="13" FontAttributes="Bold"
+                                                   TextColor="White" LineBreakMode="TailTruncation" MaxLines="1"/>
+                                            <Label Text="{Binding Description}" FontSize="10" TextColor="#FFFFFFBB"
+                                                   MaxLines="2" LineBreakMode="TailTruncation"/>
+                                            <Label Text="{Binding CreatedDate, StringFormat='{0:dd MMM yyyy, HH:mm}'}"
+                                                   FontSize="9" TextColor="#FFFFFF80" Margin="0,2,0,0"/>
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame>
+
+            <!-- Q.A Column -->
+            <Frame Grid.Row="1" Grid.Column="0"
+                   BackgroundColor="{Binding QaDropColor}" CornerRadius="16" Padding="0"
+                   HasShadow="False" BorderColor="#2A2A3E">
+                <Frame.GestureRecognizers>
+                    <DropGestureRecognizer AllowDrop="True"
+                        DragOverCommand="{Binding DragOverCommand}"
+                        DragOverCommandParameter="2"
+                        DragLeaveCommand="{Binding DragLeaveCommand}"
+                        DragLeaveCommandParameter="2"
+                        DropCommand="{Binding DropCommand}"
+                        DropCommandParameter="2" />
+                </Frame.GestureRecognizers>
+                <Grid RowDefinitions="Auto,*" RowSpacing="0">
+                    <Grid Grid.Row="0" Padding="12,10" BackgroundColor="#1A1A2E">
+                        <HorizontalStackLayout Spacing="8">
+                            <BoxView WidthRequest="4" HeightRequest="18" CornerRadius="2"
+                                     Color="#F6AD55" VerticalOptions="Center"/>
+                            <Label Text="Q.A" FontSize="13" FontAttributes="Bold"
+                                   TextColor="#F6AD55" VerticalOptions="Center"/>
+                            <Frame BackgroundColor="#2A2A3E" CornerRadius="8" Padding="7,2"
+                                   HasShadow="False" BorderColor="Transparent">
+                                <Label Text="{Binding QaBoards.Count}" FontSize="10"
+                                       TextColor="#F6AD55" FontAttributes="Bold"
+                                       HorizontalOptions="Center"/>
+                            </Frame>
+                        </HorizontalStackLayout>
+                    </Grid>
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding QaBoards}"
+                                    SelectionMode="None" Margin="6,0,6,6">
+                        <CollectionView.EmptyView>
+                            <StackLayout Padding="8,24" HorizontalOptions="Center">
+                                <Label Text="Empty" FontSize="11" TextColor="#4A5568"
+                                       HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems Mode="Reveal">
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.OpenBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#6C5CE7"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x2139;" FontSize="18"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.EditBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#F59E0B"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x270E;" FontSize="18"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.DeleteBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#EF4444"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x1F5D1;" FontSize="16"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Frame BackgroundColor="#2D2D44" CornerRadius="12"
+                                           Margin="2,3" Padding="12,10" HasShadow="False"
+                                           BorderColor="Transparent">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding BindingContext.OpenBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}"/>
+                                            <DragGestureRecognizer CanDrag="True"
+                                                DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference BoardListPageRoot}}"
+                                                DragStartingCommandParameter="{Binding}" />
+                                        </Frame.GestureRecognizers>
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="{Binding Name}" FontSize="13" FontAttributes="Bold"
+                                                   TextColor="White" LineBreakMode="TailTruncation" MaxLines="1"/>
+                                            <Label Text="{Binding Description}" FontSize="10" TextColor="#FFFFFFBB"
+                                                   MaxLines="2" LineBreakMode="TailTruncation"/>
+                                            <Label Text="{Binding CreatedDate, StringFormat='{0:dd MMM yyyy, HH:mm}'}"
+                                                   FontSize="9" TextColor="#FFFFFF80" Margin="0,2,0,0"/>
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame>
+
+            <!-- Completed Column -->
+            <Frame Grid.Row="1" Grid.Column="1"
+                   BackgroundColor="{Binding CompletedDropColor}" CornerRadius="16" Padding="0"
+                   HasShadow="False" BorderColor="#2A2A3E">
+                <Frame.GestureRecognizers>
+                    <DropGestureRecognizer AllowDrop="True"
+                        DragOverCommand="{Binding DragOverCommand}"
+                        DragOverCommandParameter="3"
+                        DragLeaveCommand="{Binding DragLeaveCommand}"
+                        DragLeaveCommandParameter="3"
+                        DropCommand="{Binding DropCommand}"
+                        DropCommandParameter="3" />
+                </Frame.GestureRecognizers>
+                <Grid RowDefinitions="Auto,*" RowSpacing="0">
+                    <Grid Grid.Row="0" Padding="12,10" BackgroundColor="#1A1A2E">
+                        <HorizontalStackLayout Spacing="8">
+                            <BoxView WidthRequest="4" HeightRequest="18" CornerRadius="2"
+                                     Color="#68D391" VerticalOptions="Center"/>
+                            <Label Text="Completed" FontSize="13" FontAttributes="Bold"
+                                   TextColor="#68D391" VerticalOptions="Center"/>
+                            <Frame BackgroundColor="#2A2A3E" CornerRadius="8" Padding="7,2"
+                                   HasShadow="False" BorderColor="Transparent">
+                                <Label Text="{Binding CompletedBoards.Count}" FontSize="10"
+                                       TextColor="#68D391" FontAttributes="Bold"
+                                       HorizontalOptions="Center"/>
+                            </Frame>
+                        </HorizontalStackLayout>
+                    </Grid>
+                    <CollectionView Grid.Row="1" ItemsSource="{Binding CompletedBoards}"
+                                    SelectionMode="None" Margin="6,0,6,6">
+                        <CollectionView.EmptyView>
+                            <StackLayout Padding="8,24" HorizontalOptions="Center">
+                                <Label Text="Empty" FontSize="11" TextColor="#4A5568"
+                                       HorizontalOptions="Center"/>
+                            </StackLayout>
+                        </CollectionView.EmptyView>
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <SwipeView>
+                                    <SwipeView.RightItems>
+                                        <SwipeItems Mode="Reveal">
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.OpenBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#6C5CE7"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x2139;" FontSize="18"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.EditBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#F59E0B"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x270E;" FontSize="18"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                            <SwipeItemView
+                                                Command="{Binding BindingContext.DeleteBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}">
+                                                <Frame Padding="0" Margin="2,3" CornerRadius="10"
+                                                       WidthRequest="44" BackgroundColor="#EF4444"
+                                                       BorderColor="Transparent">
+                                                    <Label TextColor="White" Text="&#x1F5D1;" FontSize="16"
+                                                           HorizontalOptions="Center" VerticalOptions="Center"/>
+                                                </Frame>
+                                            </SwipeItemView>
+                                        </SwipeItems>
+                                    </SwipeView.RightItems>
+                                    <Frame BackgroundColor="#2D2D44" CornerRadius="12"
+                                           Margin="2,3" Padding="12,10" HasShadow="False"
+                                           BorderColor="Transparent">
+                                        <Frame.GestureRecognizers>
+                                            <TapGestureRecognizer
+                                                Command="{Binding BindingContext.OpenBoardCommand, Source={x:Reference BoardListPageRoot}}"
+                                                CommandParameter="{Binding}"/>
+                                            <DragGestureRecognizer CanDrag="True"
+                                                DragStartingCommand="{Binding BindingContext.DragStartingCommand, Source={x:Reference BoardListPageRoot}}"
+                                                DragStartingCommandParameter="{Binding}" />
+                                        </Frame.GestureRecognizers>
+                                        <VerticalStackLayout Spacing="3">
+                                            <Label Text="{Binding Name}" FontSize="13" FontAttributes="Bold"
+                                                   TextColor="White" LineBreakMode="TailTruncation" MaxLines="1"/>
+                                            <Label Text="{Binding Description}" FontSize="10" TextColor="#FFFFFFBB"
+                                                   MaxLines="2" LineBreakMode="TailTruncation"/>
+                                            <Label Text="{Binding CreatedDate, StringFormat='{0:dd MMM yyyy, HH:mm}'}"
+                                                   FontSize="9" TextColor="#FFFFFF80" Margin="0,2,0,0"/>
+                                        </VerticalStackLayout>
+                                    </Frame>
+                                </SwipeView>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </Grid>
+            </Frame>
+
+        </Grid>
+    </Grid>
+</ContentPage>

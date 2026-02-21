@@ -1,0 +1,503 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>MiniTrello</name>
+    </assembly>
+    <members>
+        <member name="T:MiniTrello.ViewModels.BoardDetailViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.BoardId">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardDetailViewModel.boardId"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.BoardColor">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardDetailViewModel.boardColor"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.SelectedTabIndex">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardDetailViewModel.selectedTabIndex"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.BacklogCount">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardDetailViewModel.backlogCount"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.InProgressCount">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardDetailViewModel.inProgressCount"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.QaCount">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardDetailViewModel.qaCount"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.CompletedCount">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardDetailViewModel.completedCount"/>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardDetailViewModel.initPageCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardDetailViewModel.InitPageCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.InitPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardDetailViewModel.InitPage"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardDetailViewModel.loadCardsCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardDetailViewModel.LoadCardsCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.LoadCardsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardDetailViewModel.LoadCards"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardDetailViewModel.tabChangedCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardDetailViewModel.TabChangedCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.TabChangedCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardDetailViewModel.TabChanged(System.Object)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardDetailViewModel.addCardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardDetailViewModel.AddCardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.AddCardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardDetailViewModel.AddCard"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardDetailViewModel.editCardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardDetailViewModel.EditCardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.EditCardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardDetailViewModel.EditCard(MiniTrello.Models.CardItem)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardDetailViewModel.deleteCardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardDetailViewModel.DeleteCardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.DeleteCardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardDetailViewModel.DeleteCard(MiniTrello.Models.CardItem)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardDetailViewModel.moveCardForwardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardDetailViewModel.MoveCardForwardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.MoveCardForwardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardDetailViewModel.MoveCardForward(MiniTrello.Models.CardItem)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardDetailViewModel.moveCardBackwardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardDetailViewModel.MoveCardBackwardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardDetailViewModel.MoveCardBackwardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardDetailViewModel.MoveCardBackward(MiniTrello.Models.CardItem)"/>.</summary>
+        </member>
+        <member name="T:MiniTrello.ViewModels.BoardListViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.IsRefreshing">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardListViewModel.isRefreshing"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.BacklogDropColor">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardListViewModel.backlogDropColor"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.InProgressDropColor">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardListViewModel.inProgressDropColor"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.QaDropColor">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardListViewModel.qaDropColor"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.CompletedDropColor">
+            <inheritdoc cref="F:MiniTrello.ViewModels.BoardListViewModel.completedDropColor"/>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.dragStartingCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.DragStartingCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.DragStartingCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.DragStarting(MiniTrello.Models.Board)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.dropCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.DropCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.DropCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.Drop(System.Object)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.dragOverCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.DragOverCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.DragOverCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.DragOver(System.Object)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.dragLeaveCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.DragLeaveCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.DragLeaveCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.DragLeave(System.Object)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.initPageCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.InitPageCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.InitPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.InitPage"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.loadBoardsCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.LoadBoardsCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.LoadBoardsCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.LoadBoards"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.addBoardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.AddBoardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.AddBoardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.AddBoard"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.editBoardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.EditBoardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.EditBoardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.EditBoard(MiniTrello.Models.Board)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.deleteBoardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.DeleteBoardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.DeleteBoardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.DeleteBoard(MiniTrello.Models.Board)"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.BoardListViewModel.openBoardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.BoardListViewModel.OpenBoardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.BoardListViewModel.OpenBoardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand`1"/> instance wrapping <see cref="M:MiniTrello.ViewModels.BoardListViewModel.OpenBoard(MiniTrello.Models.Board)"/>.</summary>
+        </member>
+        <member name="T:MiniTrello.ViewModels.CardDetailViewModel">
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+            <inheritdoc/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.BoardId">
+            <inheritdoc cref="F:MiniTrello.ViewModels.CardDetailViewModel.boardId"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.CardId">
+            <inheritdoc cref="F:MiniTrello.ViewModels.CardDetailViewModel.cardId"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.CardTitle">
+            <inheritdoc cref="F:MiniTrello.ViewModels.CardDetailViewModel.cardTitle"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.Description">
+            <inheritdoc cref="F:MiniTrello.ViewModels.CardDetailViewModel.description"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.SelectedStatus">
+            <inheritdoc cref="F:MiniTrello.ViewModels.CardDetailViewModel.selectedStatus"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.SelectedPriority">
+            <inheritdoc cref="F:MiniTrello.ViewModels.CardDetailViewModel.selectedPriority"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.DueDate">
+            <inheritdoc cref="F:MiniTrello.ViewModels.CardDetailViewModel.dueDate"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.IsEditMode">
+            <inheritdoc cref="F:MiniTrello.ViewModels.CardDetailViewModel.isEditMode"/>
+        </member>
+        <member name="F:MiniTrello.ViewModels.CardDetailViewModel.initPageCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.CardDetailViewModel.InitPageCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.InitPageCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MiniTrello.ViewModels.CardDetailViewModel.InitPage"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.CardDetailViewModel.saveCardCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.CardDetailViewModel.SaveCardCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.SaveCardCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MiniTrello.ViewModels.CardDetailViewModel.SaveCard"/>.</summary>
+        </member>
+        <member name="F:MiniTrello.ViewModels.CardDetailViewModel.cancelCommand">
+            <summary>The backing field for <see cref="P:MiniTrello.ViewModels.CardDetailViewModel.CancelCommand"/>.</summary>
+        </member>
+        <member name="P:MiniTrello.ViewModels.CardDetailViewModel.CancelCommand">
+            <summary>Gets an <see cref="T:CommunityToolkit.Mvvm.Input.IAsyncRelayCommand"/> instance wrapping <see cref="M:MiniTrello.ViewModels.CardDetailViewModel.Cancel"/>.</summary>
+        </member>
+        <member name="T:MiniTrello.ViewModels.ViewModelBase">
+            <inheritdoc/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.ViewModelBase.IsBusy">
+            <inheritdoc cref="F:MiniTrello.ViewModels.ViewModelBase.isBusy"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.ViewModelBase.Title">
+            <inheritdoc cref="F:MiniTrello.ViewModels.ViewModelBase.title"/>
+        </member>
+        <member name="P:MiniTrello.ViewModels.ViewModelBase.BusyMessage">
+            <inheritdoc cref="F:MiniTrello.ViewModels.ViewModelBase.busyMessage"/>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Button.TextColorTo(Microsoft.Maui.Controls.Button,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_DatePicker.TextColorTo(Microsoft.Maui.Controls.DatePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Editor.TextColorTo(Microsoft.Maui.Controls.Editor,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Entry.TextColorTo(Microsoft.Maui.Controls.Entry,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_InputView.TextColorTo(Microsoft.Maui.Controls.InputView,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Label.TextColorTo(Microsoft.Maui.Controls.Label,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_Picker.TextColorTo(Microsoft.Maui.Controls.Picker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_RadioButton.TextColorTo(Microsoft.Maui.Controls.RadioButton,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_SearchBar.TextColorTo(Microsoft.Maui.Controls.SearchBar,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="M:Microsoft.Maui.Controls.ColorAnimationExtensions_TimePicker.TextColorTo(Microsoft.Maui.Controls.TimePicker,Microsoft.Maui.Graphics.Color,System.UInt32,System.UInt32,Microsoft.Maui.Easing,System.Threading.CancellationToken)">
+            <summary>
+            Animates the TextColor of an <see cref = "T:Microsoft.Maui.ITextStyle"/> to the given color
+            </summary>
+            <param name = "element"></param>
+            <param name = "color">The target color to animate the <see cref = "P:Microsoft.Maui.ITextStyle.TextColor"/> to</param>
+            <param name = "rate">The time, in milliseconds, between the frames of the animation</param>
+            <param name = "length">The duration, in milliseconds, of the animation</param>
+            <param name = "easing">The easing function to be used in the animation</param>
+            <param name = "token"><see cref = "T:System.Threading.CancellationToken"/></param>
+            <returns>Value indicating if the animation completed successfully or not</returns>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BoardId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BoardId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BoardColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BoardColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedTabIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedTabIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BacklogCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BacklogCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.InProgressCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "InProgressCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.QaCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "QaCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CompletedCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CompletedCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BacklogDropColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BacklogDropColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.InProgressDropColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "InProgressDropColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.QaDropColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "QaDropColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CompletedDropColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CompletedDropColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CardId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CardId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.CardTitle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "CardTitle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedStatus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedStatus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.SelectedPriority">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "SelectedPriority" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.DueDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "DueDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsEditMode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsEditMode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangingArgs.BusyMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangingEventArgs"/> instance for all "BusyMessage" generated properties.</summary>
+        </member>
+        <member name="T:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs">
+            <summary>
+            A helper type providing cached, reusable <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instances
+            for all properties generated with <see cref="T:CommunityToolkit.Mvvm.ComponentModel.ObservablePropertyAttribute"/>.
+            </summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BoardId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BoardId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BoardColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BoardColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedTabIndex">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedTabIndex" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BacklogCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BacklogCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.InProgressCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "InProgressCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.QaCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "QaCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CompletedCount">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CompletedCount" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsRefreshing">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsRefreshing" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BacklogDropColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BacklogDropColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.InProgressDropColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "InProgressDropColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.QaDropColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "QaDropColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CompletedDropColor">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CompletedDropColor" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CardId">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CardId" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.CardTitle">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "CardTitle" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Description">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Description" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedStatus">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedStatus" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.SelectedPriority">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "SelectedPriority" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.DueDate">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "DueDate" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsEditMode">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsEditMode" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.IsBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "IsBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.isNotBusy">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "isNotBusy" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.Title">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "Title" generated properties.</summary>
+        </member>
+        <member name="F:CommunityToolkit.Mvvm.ComponentModel.__Internals.__KnownINotifyPropertyChangedArgs.BusyMessage">
+            <summary>The cached <see cref="T:System.ComponentModel.PropertyChangedEventArgs"/> instance for all "BusyMessage" generated properties.</summary>
+        </member>
+    </members>
+</doc>

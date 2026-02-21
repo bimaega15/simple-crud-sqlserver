@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             xmlns:helpers="clr-namespace:MiniTrello.Helpers"
+             x:Class="MiniTrello.Views.BoardDetailPage"
+             x:Name="BoardDetailPageRoot"
+             Title="{Binding Title}"
+             BackgroundColor="#F0F2F5"
+             Shell.BackgroundColor="#4A90D9"
+             Shell.TitleColor="White">
+
+    <ContentPage.Resources>
+        <helpers:PriorityColorConverter x:Key="PriorityColorConverter"/>
+        <helpers:PriorityTextConverter x:Key="PriorityTextConverter"/>
+        <helpers:DueDateColorConverter x:Key="DueDateColorConverter"/>
+        <helpers:TabBackgroundConverter x:Key="TabBgConverter"/>
+    </ContentPage.Resources>
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing" Command="{Binding InitPageCommand}" />
+    </ContentPage.Behaviors>
+
+    <Grid RowDefinitions="Auto,*,Auto" Padding="0">
+        <!-- Tab Selector (4 columns) -->
+        <Frame Grid.Row="0" BackgroundColor="White" CornerRadius="16" Margin="12,8"
+               Padding="4" HasShadow="True" BorderColor="Transparent">
+            <Grid ColumnDefinitions="*,*,*,*" ColumnSpacing="3">
+                <!-- Backlog Tab -->
+                <Frame Grid.Column="0" CornerRadius="12" Padding="6,10" HasShadow="False"
+                       BorderColor="Transparent"
+                       BackgroundColor="{Binding SelectedTabIndex, Converter={StaticResource TabBgConverter}, ConverterParameter=0}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TabChangedCommand}"
+                            CommandParameter="0"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                        <Label Text="Backlog" FontSize="11" FontAttributes="Bold"
+                               HorizontalOptions="Center" TextColor="#333"/>
+                        <Label Text="{Binding BacklogCount}" FontSize="10"
+                               HorizontalOptions="Center" TextColor="#666"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- In Progress Tab -->
+                <Frame Grid.Column="1" CornerRadius="12" Padding="6,10" HasShadow="False"
+                       BorderColor="Transparent"
+                       BackgroundColor="{Binding SelectedTabIndex, Converter={StaticResource TabBgConverter}, ConverterParameter=1}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TabChangedCommand}"
+                            CommandParameter="1"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                        <Label Text="Progress" FontSize="11" FontAttributes="Bold"
+                               HorizontalOptions="Center" TextColor="#333"/>
+                        <Label Text="{Binding InProgressCount}" FontSize="10"
+                               HorizontalOptions="Center" TextColor="#666"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Q.A Tab -->
+                <Frame Grid.Column="2" CornerRadius="12" Padding="6,10" HasShadow="False"
+                       BorderColor="Transparent"
+                       BackgroundColor="{Binding SelectedTabIndex, Converter={StaticResource TabBgConverter}, ConverterParameter=2}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TabChangedCommand}"
+                            CommandParameter="2"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                        <Label Text="Q.A" FontSize="11" FontAttributes="Bold"
+                               HorizontalOptions="Center" TextColor="#333"/>
+                        <Label Text="{Binding QaCount}" FontSize="10"
+                               HorizontalOptions="Center" TextColor="#666"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <!-- Completed Tab -->
+                <Frame Grid.Column="3" CornerRadius="12" Padding="6,10" HasShadow="False"
+                       BorderColor="Transparent"
+                       BackgroundColor="{Binding SelectedTabIndex, Converter={StaticResource TabBgConverter}, ConverterParameter=3}">
+                    <Frame.GestureRecognizers>
+                        <TapGestureRecognizer Command="{Binding TabChangedCommand}"
+                            CommandParameter="3"/>
+                    </Frame.GestureRecognizers>
+                    <VerticalStackLayout HorizontalOptions="Center" Spacing="2">
+                        <Label Text="Done" FontSize="11" FontAttributes="Bold"
+                               HorizontalOptions="Center" TextColor="#333"/>
+                        <Label Text="{Binding CompletedCount}" FontSize="10"
+                               HorizontalOptions="Center" TextColor="#666"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+        </Frame>
+
+        <!-- Cards CollectionView -->
+        <CollectionView Grid.Row="1" ItemsSource="{Binding Cards}" SelectionMode="None"
+                        Margin="4,0">
+            <CollectionView.EmptyView>
+                <StackLayout VerticalOptions="Center" HorizontalOptions="Center" Padding="40">
+                    <Label Text="No cards in this column" FontSize="16" TextColor="#999"
+                           HorizontalOptions="Center"/>
+                    <Label Text="Tap '+ Add Card' to create one" FontSize="13" TextColor="#BBB"
+                           HorizontalOptions="Center" Margin="0,4,0,0"/>
+                </StackLayout>
+            </CollectionView.EmptyView>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <SwipeView>
+                        <SwipeView.LeftItems>
+                            <SwipeItems Mode="Execute">
+                                <SwipeItemView
+                                    Command="{Binding BindingContext.MoveCardBackwardCommand, Source={x:Reference BoardDetailPageRoot}}"
+                                    CommandParameter="{Binding}">
+                                    <Frame Padding="0" Margin="4,6" CornerRadius="12"
+                                           WidthRequest="90" BackgroundColor="#2196F3"
+                                           BorderColor="Transparent">
+                                        <Label TextColor="White" Text="&#8592; Back"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.LeftItems>
+                        <SwipeView.RightItems>
+                            <SwipeItems Mode="Reveal">
+                                <SwipeItemView
+                                    Command="{Binding BindingContext.MoveCardForwardCommand, Source={x:Reference BoardDetailPageRoot}}"
+                                    CommandParameter="{Binding}">
+                                    <Frame Padding="0" Margin="4,6" CornerRadius="12"
+                                           WidthRequest="80" BackgroundColor="#4CAF50"
+                                           BorderColor="Transparent">
+                                        <Label TextColor="White" Text="Next &#8594;"
+                                               FontAttributes="Bold"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                </SwipeItemView>
+                                <SwipeItemView
+                                    Command="{Binding BindingContext.DeleteCardCommand, Source={x:Reference BoardDetailPageRoot}}"
+                                    CommandParameter="{Binding}">
+                                    <Frame Padding="0" Margin="4,6" CornerRadius="12"
+                                           WidthRequest="80" BackgroundColor="#F44336"
+                                           BorderColor="Transparent">
+                                        <Label TextColor="White" Text="Delete" FontAttributes="Bold"
+                                               HorizontalOptions="Center" VerticalOptions="Center"/>
+                                    </Frame>
+                                </SwipeItemView>
+                            </SwipeItems>
+                        </SwipeView.RightItems>
+
+                        <!-- Card Item -->
+                        <Frame BackgroundColor="White" CornerRadius="14" Margin="10,5"
+                               Padding="14,12" HasShadow="True" BorderColor="Transparent">
+                            <Frame.GestureRecognizers>
+                                <TapGestureRecognizer
+                                    Command="{Binding BindingContext.EditCardCommand, Source={x:Reference BoardDetailPageRoot}}"
+                                    CommandParameter="{Binding}"/>
+                            </Frame.GestureRecognizers>
+                            <Grid RowDefinitions="Auto,Auto,Auto" ColumnDefinitions="*,Auto"
+                                  RowSpacing="6">
+                                <!-- Title -->
+                                <Label Grid.Row="0" Grid.ColumnSpan="2"
+                                       Text="{Binding Title}" FontSize="16"
+                                       FontAttributes="Bold" TextColor="#1a1a2e"/>
+                                <!-- Description -->
+                                <Label Grid.Row="1" Grid.ColumnSpan="2"
+                                       Text="{Binding Description}" FontSize="13"
+                                       TextColor="#666" MaxLines="2" LineBreakMode="TailTruncation"/>
+                                <!-- Priority Badge + Due Date -->
+                                <HorizontalStackLayout Grid.Row="2" Spacing="8">
+                                    <Frame BackgroundColor="{Binding Priority, Converter={StaticResource PriorityColorConverter}}"
+                                           CornerRadius="10" Padding="8,3" HasShadow="False"
+                                           BorderColor="Transparent">
+                                        <Label Text="{Binding Priority, Converter={StaticResource PriorityTextConverter}}"
+                                               FontSize="11" TextColor="White" FontAttributes="Bold"/>
+                                    </Frame>
+                                    <Label Text="{Binding DueDate, StringFormat='{0:MMM dd}'}"
+                                           FontSize="12" VerticalOptions="Center"
+                                           TextColor="{Binding DueDate, Converter={StaticResource DueDateColorConverter}}"/>
+                                </HorizontalStackLayout>
+                            </Grid>
+                        </Frame>
+                    </SwipeView>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Floating Add Button -->
+        <Button Grid.Row="2" Text="+ Add Card"
+                BackgroundColor="#4A90D9" TextColor="White" CornerRadius="24"
+                FontAttributes="Bold" FontSize="15"
+                Margin="16,8,16,16" Padding="0,14"
+                Command="{Binding AddCardCommand}"/>
+    </Grid>
+</ContentPage>

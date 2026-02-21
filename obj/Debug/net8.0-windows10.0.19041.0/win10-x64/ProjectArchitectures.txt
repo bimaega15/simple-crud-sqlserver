@@ -1,0 +1,1 @@
+C:\bima\MiniTrello\MiniTrello\MiniTrello.csproj;x64

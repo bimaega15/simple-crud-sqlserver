@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:toolkit="http://schemas.microsoft.com/dotnet/2022/maui/toolkit"
+             x:Class="MiniTrello.Views.CardDetailPage"
+             Title="{Binding Title}"
+             BackgroundColor="#F0F2F5"
+             Shell.BackgroundColor="#4A90D9"
+             Shell.TitleColor="White">
+
+    <ContentPage.Behaviors>
+        <toolkit:EventToCommandBehavior EventName="Appearing" Command="{Binding InitPageCommand}" />
+    </ContentPage.Behaviors>
+
+    <ScrollView Padding="16">
+        <VerticalStackLayout Spacing="16">
+            <!-- Card Title -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True"
+                   BorderColor="Transparent">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Title" FontSize="13" TextColor="#666" FontAttributes="Bold"/>
+                    <Entry Text="{Binding CardTitle}" Placeholder="Enter card title..."
+                           FontSize="16" TextColor="#1a1a2e"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Description -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True"
+                   BorderColor="Transparent">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Description" FontSize="13" TextColor="#666" FontAttributes="Bold"/>
+                    <Editor Text="{Binding Description}" Placeholder="Enter description..."
+                            FontSize="14" TextColor="#333" HeightRequest="120"
+                            AutoSize="TextChanges"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Status & Priority -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12">
+                <Frame Grid.Column="0" BackgroundColor="White" CornerRadius="12"
+                       Padding="16" HasShadow="True" BorderColor="Transparent">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Status" FontSize="13" TextColor="#666" FontAttributes="Bold"/>
+                        <Picker ItemsSource="{Binding StatusOptions}"
+                                SelectedIndex="{Binding SelectedStatus}" TextColor="#333"/>
+                    </VerticalStackLayout>
+                </Frame>
+                <Frame Grid.Column="1" BackgroundColor="White" CornerRadius="12"
+                       Padding="16" HasShadow="True" BorderColor="Transparent">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="Priority" FontSize="13" TextColor="#666" FontAttributes="Bold"/>
+                        <Picker ItemsSource="{Binding PriorityOptions}"
+                                SelectedIndex="{Binding SelectedPriority}" TextColor="#333"/>
+                    </VerticalStackLayout>
+                </Frame>
+            </Grid>
+
+            <!-- Due Date -->
+            <Frame BackgroundColor="White" CornerRadius="12" Padding="16" HasShadow="True"
+                   BorderColor="Transparent">
+                <VerticalStackLayout Spacing="8">
+                    <Label Text="Due Date" FontSize="13" TextColor="#666" FontAttributes="Bold"/>
+                    <DatePicker Date="{Binding DueDate}" TextColor="#333"
+                                MinimumDate="01/01/2024"/>
+                </VerticalStackLayout>
+            </Frame>
+
+            <!-- Action Buttons -->
+            <Grid ColumnDefinitions="*,*" ColumnSpacing="12" Margin="0,8,0,0">
+                <Button Grid.Column="0" Text="Cancel" BackgroundColor="#E0E0E0"
+                        TextColor="#333" CornerRadius="12" FontAttributes="Bold"
+                        Padding="0,14" Command="{Binding CancelCommand}"/>
+                <Button Grid.Column="1" Text="Save" BackgroundColor="#4A90D9"
+                        TextColor="White" CornerRadius="12" FontAttributes="Bold"
+                        Padding="0,14" Command="{Binding SaveCardCommand}"/>
+            </Grid>
+
+            <!-- Spacer for scroll -->
+            <BoxView HeightRequest="20" Color="Transparent"/>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>
