@@ -18,7 +18,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MiniTrello")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+47424d76967132df8370483fd439c7483cbef716")]
 [assembly: System.Reflection.AssemblyProductAttribute("MiniTrello")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MiniTrello")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

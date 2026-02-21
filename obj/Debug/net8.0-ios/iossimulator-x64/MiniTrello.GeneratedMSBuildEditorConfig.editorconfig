@@ -12,61 +12,61 @@ build_property.PlatformNeutralAssembly =
 build_property.EnforceExtendedAnalyzerRules = 
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = MiniTrello
-build_property.ProjectDir = C:\bima\MiniTrello\MiniTrello\
+build_property.ProjectDir = C:\.NET\simple-crud-sqlserver\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 8.0
 build_property.EnableCodeStyleSeverity = 
 
-[C:/bima/MiniTrello/MiniTrello/App.xaml]
+[C:/.NET/simple-crud-sqlserver/App.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MiniTrello.App.xaml
 build_metadata.AdditionalFiles.TargetPath = App.xaml
 build_metadata.AdditionalFiles.RelativePath = App.xaml
 
-[C:/bima/MiniTrello/MiniTrello/AppShell.xaml]
+[C:/.NET/simple-crud-sqlserver/AppShell.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MiniTrello.AppShell.xaml
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
-[C:/bima/MiniTrello/MiniTrello/Resources/Styles/Colors.xaml]
+[C:/.NET/simple-crud-sqlserver/Resources/Styles/Colors.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MiniTrello.Resources.Styles.Colors.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
 
-[C:/bima/MiniTrello/MiniTrello/Resources/Styles/Styles.xaml]
+[C:/.NET/simple-crud-sqlserver/Resources/Styles/Styles.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MiniTrello.Resources.Styles.Styles.xaml
 build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
 build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
 
-[C:/bima/MiniTrello/MiniTrello/Views/BoardDetailPage.xaml]
+[C:/.NET/simple-crud-sqlserver/Views/BoardDetailPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MiniTrello.Views.BoardDetailPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\BoardDetailPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\BoardDetailPage.xaml
 
-[C:/bima/MiniTrello/MiniTrello/Views/BoardDetailPopup.xaml]
+[C:/.NET/simple-crud-sqlserver/Views/BoardDetailPopup.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MiniTrello.Views.BoardDetailPopup.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\BoardDetailPopup.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\BoardDetailPopup.xaml
 
-[C:/bima/MiniTrello/MiniTrello/Views/BoardFormPopup.xaml]
+[C:/.NET/simple-crud-sqlserver/Views/BoardFormPopup.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MiniTrello.Views.BoardFormPopup.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\BoardFormPopup.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\BoardFormPopup.xaml
 
-[C:/bima/MiniTrello/MiniTrello/Views/BoardListPage.xaml]
+[C:/.NET/simple-crud-sqlserver/Views/BoardListPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MiniTrello.Views.BoardListPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\BoardListPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Views\BoardListPage.xaml
 
-[C:/bima/MiniTrello/MiniTrello/Views/CardDetailPage.xaml]
+[C:/.NET/simple-crud-sqlserver/Views/CardDetailPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MiniTrello.Views.CardDetailPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Views\CardDetailPage.xaml

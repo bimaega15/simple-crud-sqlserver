@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "haAWHUQA5oI=",
+  "dgSpecHash": "2oSwf/DP4xA=",
   "success": true,
-  "projectFilePath": "C:\\bima\\MiniTrello\\MiniTrello\\MiniTrello.csproj",
+  "projectFilePath": "C:\\.NET\\simple-crud-sqlserver\\MiniTrello.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\phron\\.nuget\\packages\\communitytoolkit.maui\\9.0.0\\communitytoolkit.maui.9.0.0.nupkg.sha512",
     "C:\\Users\\phron\\.nuget\\packages\\communitytoolkit.maui.core\\9.0.0\\communitytoolkit.maui.core.9.0.0.nupkg.sha512",

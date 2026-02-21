@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\bima\\MiniTrello\\MiniTrello\\MiniTrello.csproj": {}
+    "C:\\.NET\\simple-crud-sqlserver\\MiniTrello.csproj": {}
   },
   "projects": {
-    "C:\\bima\\MiniTrello\\MiniTrello\\MiniTrello.csproj": {
+    "C:\\.NET\\simple-crud-sqlserver\\MiniTrello.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\bima\\MiniTrello\\MiniTrello\\MiniTrello.csproj",
+        "projectUniqueName": "C:\\.NET\\simple-crud-sqlserver\\MiniTrello.csproj",
         "projectName": "MiniTrello",
-        "projectPath": "C:\\bima\\MiniTrello\\MiniTrello\\MiniTrello.csproj",
+        "projectPath": "C:\\.NET\\simple-crud-sqlserver\\MiniTrello.csproj",
         "packagesPath": "C:\\Users\\phron\\.nuget\\packages\\",
-        "outputPath": "C:\\bima\\MiniTrello\\MiniTrello\\obj\\",
+        "outputPath": "C:\\.NET\\simple-crud-sqlserver\\obj\\",
         "projectStyle": "PackageReference",
         "crossTargeting": true,
         "fallbackFolders": [
